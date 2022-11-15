@@ -49,11 +49,8 @@ func newTestProvider(t *testing.T, ctrl *gomock.Controller, table *schema.Table,
 		},
 		ConfigMeta: provider.ConfigMeta{
 			GetDefaultConfigTemplate: func(ctx context.Context) string {
-				return `##  Optional, Repeated. Add an accounts block for every account you want to assume-role into and fetch data from.
-#accounts:
-#  - access_token: "xxx" # access_token
-#    orgs: #  org list 
-#      - "xxx"`
+				return `# api_key: "<YOUR_KEY>"
+# api_email: "<YOUR_EMAIL>"`
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
 				return nil
@@ -72,3 +69,4 @@ func newTestProvider(t *testing.T, ctrl *gomock.Controller, table *schema.Table,
 		},
 	}
 }
+
