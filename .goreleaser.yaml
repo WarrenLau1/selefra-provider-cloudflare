@@ -1,4 +1,4 @@
-project_name: selefra-provider-okta
+project_name: selefra-provider-cloudflare
 before:
   hooks:
     - go mod tidy
