@@ -1,6 +1,6 @@
 # Selefra Provider Cloudflare
 
-Use this repo as a raw reference to **tables and schema** for Azure cloud resources. [Here's](https://github.com/selefra/selefra-provider-cloudflare/blob/main/docs/tables/cloudflare.md) a summary of full coverage. 
+Use this repo as a raw reference to **tables and schema** for cloudflare resources. [Here's](https://github.com/selefra/selefra-provider-cloudflare/blob/main/docs/tables/cloudflare.md) a summary of full coverage. 
 As an experienced user, the tables are especially helpful when you're writing SQL queries for specific task. 
 If you're just starting, navigate to our documentation for example usage.
  
