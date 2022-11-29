@@ -18,7 +18,7 @@ func GetProvider() *provider.Provider {
 		ClientMeta: schema.ClientMeta{
 			InitClient: func(ctx context.Context, clientMeta *schema.ClientMeta, config *viper.Viper) ([]any, *schema.Diagnostics) {
 				var cloudflareConfig cloudflare_client.CloudflareProviderConfigs
-				err := config.Unmarshal(&cloudflareConfig)
+				err := config.Unmarshal(&cloudflareConfig.Providers)
 
 				if err != nil {
 					return nil, schema.NewDiagnostics().AddErrorMsg("analysis config err: %s", err.Error())
@@ -49,7 +49,7 @@ func GetProvider() *provider.Provider {
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
 				var cloudflareConfig cloudflare_client.CloudflareProviderConfigs
-				err := config.Unmarshal(&cloudflareConfig)
+				err := config.Unmarshal(&cloudflareConfig.Providers)
 				if err != nil {
 					return schema.NewDiagnostics().AddErrorMsg("analysis config err: %s", err.Error())
 				}
@@ -73,3 +73,4 @@ func GetProvider() *provider.Provider {
 		},
 	}
 }
+

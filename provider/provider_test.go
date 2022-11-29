@@ -19,7 +19,6 @@ func TestProvider_PullTable(t *testing.T) {
 
 	wk := "."
 	config := `
-providers:
 `
 	myProvider := GetProvider()
 	Pull(myProvider, config, wk, "*")
@@ -56,3 +55,4 @@ func Pull(myProvider *provider.Provider, config, workspace string, pullTables ..
 		panic(diagnostics.AddFatal("provider pull table error: %s", err.Error()).ToString())
 	}
 }
+
