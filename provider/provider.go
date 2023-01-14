@@ -6,6 +6,7 @@ import (
 	"github.com/selefra/selefra-provider-sdk/provider"
 	"github.com/selefra/selefra-provider-sdk/provider/schema"
 	"github.com/spf13/viper"
+	"os"
 )
 
 const Version = "v0.0.1"
@@ -26,6 +27,22 @@ func GetProvider() *provider.Provider {
 
 				if len(cloudflareConfig.Providers) == 0 {
 					return nil, schema.NewDiagnostics().AddErrorMsg("analysis config err: no configuration")
+				}
+
+				if cloudflareConfig.Providers[0].ApiKey == "" {
+					cloudflareConfig.Providers[0].ApiKey = os.Getenv("CLOUDFLARE_API_KEY")
+				}
+
+				if cloudflareConfig.Providers[0].ApiKey == "" {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing ApiKey in configuration")
+				}
+
+				if cloudflareConfig.Providers[0].ApiEmail == "" {
+					cloudflareConfig.Providers[0].ApiEmail = os.Getenv("CLOUDFLARE_API_EMAIL")
+				}
+
+				if cloudflareConfig.Providers[0].ApiEmail == "" {
+					return nil, schema.NewDiagnostics().AddErrorMsg("missing ApiEmail in configuration")
 				}
 
 				clients, err := cloudflare_client.NewClients(cloudflareConfig)
@@ -53,10 +70,6 @@ func GetProvider() *provider.Provider {
 				if err != nil {
 					return schema.NewDiagnostics().AddErrorMsg("analysis config err: %s", err.Error())
 				}
-
-				if len(cloudflareConfig.Providers) == 0 {
-					return schema.NewDiagnostics().AddErrorMsg("analysis config err: no configuration")
-				}
 				return nil
 			},
 		},
@@ -73,4 +86,3 @@ func GetProvider() *provider.Provider {
 		},
 	}
 }
-
