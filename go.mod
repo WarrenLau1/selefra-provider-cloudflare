@@ -1,6 +1,6 @@
 module github.com/selefra/selefra-provider-cloudflare
 
-go 1.18
+go 1.19
 
 require (
 	github.com/cloudflare/cloudflare-go v0.54.0
