@@ -7,7 +7,7 @@ require (
 	github.com/golang/mock v1.6.0
 	github.com/pkg/errors v0.9.1
 	github.com/rs/zerolog v1.15.0
-	github.com/selefra/selefra-provider-sdk v0.0.9
+	github.com/selefra/selefra-provider-sdk v0.0.18
 	github.com/selefra/selefra-utils v0.0.2
 	github.com/spf13/viper v1.13.0
 )
